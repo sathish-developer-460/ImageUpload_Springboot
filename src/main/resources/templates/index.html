@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Images</title>
+</head>
+
+<body>
+    <h1>Uploaded Images</h1>
+    <a th:href="@{/upload}">Upload New Image</a>
+    <div>
+        <p th:text="${files.size()} + ' files'">0 files</p>
+        <p th:if="${message}" th:text="${message}"></p>
+    </div>
+    <div>
+        <ul>
+            <li th:each="fileName : ${files}">
+                <img th:src="@{'/uploads/' + ${fileName}}" alt="Image Preview" width="200" height="200" />
+                <span th:text="${fileName}"></span>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
